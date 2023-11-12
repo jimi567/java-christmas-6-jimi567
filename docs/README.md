@@ -92,8 +92,8 @@
 4. Error enum
     - [x] Error 메세지를 가진다.
     - [x] Error 는 ```IllegalArgumentException ```을 발생시키는 기능을 가진다.
-5. View enum
-    - [ ] 출력에 관한 메세지를 가진다.
+5. ViewMessage enum
+    - [x] 출력에 관한 메세지를 가진다.
 
 ### 도메인
 
