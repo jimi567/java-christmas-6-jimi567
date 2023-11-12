@@ -89,10 +89,9 @@
     - [x] 크리스마스 디데이 날짜 할인 날짜의 최소,최대(1, 25)
     - [x] 별이 있는 날(각 주 일요일 , 25)
 
-
 4. Error enum
-    - [ ] Error 메세지를 가진다.
-    - [ ] Error 는 ```IllegalArgumentException ```을 발생시키는 기능을 가진다.
+    - [x] Error 메세지를 가진다.
+    - [x] Error 는 ```IllegalArgumentException ```을 발생시키는 기능을 가진다.
 5. View enum
     - [ ] 출력에 관한 메세지를 가진다.
 

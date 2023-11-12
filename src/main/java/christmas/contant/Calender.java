@@ -15,7 +15,7 @@ public enum Calender {
         this.day = day;
     }
 
-    public int getDay() {
+    public int get() {
         return day;
     }
 }
