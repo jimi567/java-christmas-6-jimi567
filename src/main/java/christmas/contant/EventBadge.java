@@ -5,8 +5,8 @@ public enum EventBadge {
     TREE("트리", 10_000),
     SANTA("산타", 20_000);
 
-    private String name;
-    private int minimumBenefitAmount;
+    private final String name;
+    private final int minimumBenefitAmount;
 
     EventBadge(String name, int minimumBenefitAmount) {
         this.name = name;

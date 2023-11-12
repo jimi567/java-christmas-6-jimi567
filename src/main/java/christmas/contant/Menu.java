@@ -15,9 +15,9 @@ public enum Menu {
     RED_WINE("레드와인", 60_000, "음료"),
     CHAMPAGNE("샴페인", 25_000, "음료");
 
-    private String name;
-    private int price;
-    private String category;
+    private final String name;
+    private final int price;
+    private final String category;
 
     Menu(String name, int price, String category) {
         this.name = name;

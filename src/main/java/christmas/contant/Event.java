@@ -10,7 +10,7 @@ public enum Event {
     GIFT_APPLICABLE_AMOUNT(120_000),
     D_DAY_DISCOUNT_START_AMOUNT(1_000),
     D_DAY_DISCOUNT_PLUS_AMOUNT(100);
-    private int number;
+    private final int number;
 
     Event(int number) {
         this.number = number;
