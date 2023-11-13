@@ -22,4 +22,8 @@ public enum Calender {
     public List<Integer> get() {
         return days;
     }
+
+    public static int getChristmasDate() {
+        return 25;
+    }
 }
