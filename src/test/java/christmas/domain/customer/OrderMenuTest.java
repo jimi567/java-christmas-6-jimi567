@@ -2,8 +2,11 @@ package christmas.domain.customer;
 
 import static christmas.contant.Error.NOT_VALIDATE_ORDER_ERROR;
 import static christmas.contant.Error.ORDER_ONLY_DRINK_ERROR;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
+import christmas.domain.menu.AppetizerMenu;
+import christmas.domain.menu.DessertMenu;
 import christmas.domain.menu.DrinkMenu;
 import christmas.domain.menu.MainMenu;
 import christmas.domain.menu.Menu;
@@ -14,6 +17,18 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class OrderMenuTest {
+
+    private OrderMenu orderMenu;
+
+    void setOrderMenu() {
+        HashMap<Menu, Integer> source = new HashMap<>();
+        source.put(new MainMenu("크리스마스파스타"), 2);
+        source.put(new DrinkMenu("레드와인"), 1);
+        source.put(new AppetizerMenu("타파스"), 2);
+        source.put(new DessertMenu("초코케이크"), 2);
+        orderMenu = new OrderMenu(source);
+    }
+
     @ParameterizedTest
     @CsvSource({"카레라이스 ,1", "파스타,1", "바베큐립,1"})
     @DisplayName("메뉴판에 없는 메뉴를 주문한 경우")
@@ -56,5 +71,60 @@ public class OrderMenuTest {
 
         assertThatIllegalArgumentException().isThrownBy(() -> new OrderMenu(orderMenu))
                 .withMessage(ORDER_ONLY_DRINK_ERROR.get());
+    }
+
+    @Test
+    @DisplayName("메뉴의 총 금액을 리턴하는 기능")
+    void testGetTotalAmount() {
+        setOrderMenu();
+
+        int result = orderMenu.getTotalAmount();
+        int expected = 151_000;
+
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("디저트 메뉴의 갯수를 리턴하는 기능")
+    void testGetCountDessertMenu() {
+        setOrderMenu();
+
+        int result = orderMenu.getCountDessertMenu();
+        int expected = 2;
+
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("메인 메뉴의 갯수를 리턴하는 기능")
+    void testGetCountMainMenu() {
+        setOrderMenu();
+
+        int result = orderMenu.getCountMainMenu();
+        int expected = 2;
+
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("음료 메뉴의 갯수를 리턴하는 기능")
+    void testGetCountDrinkMenu() {
+        setOrderMenu();
+
+        int result = orderMenu.getCountDrinkMenu();
+        int expected = 1;
+
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("에피타이저 메뉴의 갯수를 리턴하는 기능")
+    void testGetCountAppetizerMenu() {
+        setOrderMenu();
+
+        int result = orderMenu.getCountAppetizerMenu();
+        int expected = 2;
+
+        assertThat(result).isEqualTo(expected);
     }
 }
