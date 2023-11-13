@@ -1,5 +1,7 @@
 package christmas.contant;
 
+import java.util.Arrays;
+
 public enum Menu {
 
     MUSHROOM_SOUP("양송이수프", 6_000, "에피타이저"),
@@ -35,5 +37,11 @@ public enum Menu {
 
     public String getCategory() {
         return category;
+    }
+
+    public static boolean isExistMenu(String name) {
+        return Arrays.stream(values())
+                .map(Menu::getName)
+                .anyMatch(name::equals);
     }
 }
