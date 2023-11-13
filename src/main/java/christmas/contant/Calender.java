@@ -1,21 +1,26 @@
 package christmas.contant;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public enum Calender {
-    EVENT_START_DAY(1),
-    EVENT_END_DAY(31),
-    D_DAY_EVENT_START_DAY(1),
-    D_DAY_EVENT_END_DAY(25),
-    STAR_DAY_FIRST(1),
-    STAR_DAY_CYCLE(7),
-    CHRISTMAS_DAY(25);
+    EVENT_DAYS(IntStream.rangeClosed(1, 31)
+            .boxed()
+            .collect(Collectors.toList())),
+    D_DAY_EVENT_DAYS(IntStream.rangeClosed(1, 25)
+            .boxed()
+            .collect(Collectors.toList())),
+    Star_DAYS(List.of(3, 10, 17, 24, 31, 25)),
+    WEEKEND_DAYS(List.of(1, 2, 8, 9, 15, 16, 22, 23, 29, 30));
 
-    private final int day;
+    private final List<Integer> days;
 
-    Calender(int day) {
-        this.day = day;
+    Calender(List<Integer> days) {
+        this.days = days;
     }
 
-    public int get() {
-        return day;
+    public List<Integer> get() {
+        return days;
     }
 }
