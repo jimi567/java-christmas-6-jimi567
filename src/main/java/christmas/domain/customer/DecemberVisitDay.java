@@ -1,4 +1,4 @@
-package christmas.domain.visitday;
+package christmas.domain.customer;
 
 import static christmas.contant.Calender.D_DAY_EVENT_DAYS;
 import static christmas.contant.Calender.EVENT_DAYS;

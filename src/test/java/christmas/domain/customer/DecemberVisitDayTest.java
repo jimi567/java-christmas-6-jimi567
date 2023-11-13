@@ -1,4 +1,4 @@
-package christmas.domain.visitday;
+package christmas.domain.customer;
 
 import static christmas.contant.Error.NOT_VALIDATE_DAY_ERROR;
 import static org.assertj.core.api.Assertions.assertThat;

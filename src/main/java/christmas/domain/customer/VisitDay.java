@@ -1,4 +1,4 @@
-package christmas.domain.visitday;
+package christmas.domain.customer;
 
 public interface VisitDay {
     void validate(int day);
