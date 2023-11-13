@@ -5,6 +5,8 @@ import christmas.domain.menu.DessertMenu;
 import christmas.domain.menu.DrinkMenu;
 import christmas.domain.menu.MainMenu;
 import christmas.domain.menu.Menu;
+import java.util.Arrays;
+import java.util.List;
 
 public enum MenuBoard {
 
@@ -30,4 +32,11 @@ public enum MenuBoard {
         this.menu = menu;
     }
 
+    public Menu get() {
+        return menu;
+    }
+
+    public static List<Menu> getSellingMenus() {
+        return Arrays.stream(MenuBoard.values()).map(MenuBoard::get).toList();
+    }
 }
