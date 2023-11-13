@@ -4,11 +4,18 @@ import static christmas.contant.Error.NOT_VALIDATE_ORDER_ERROR;
 import static christmas.contant.Error.ORDER_ONLY_DRINK_ERROR;
 import static christmas.contant.MenuBoard.AT_LEAST_ORDER_QUANTITY;
 import static christmas.contant.MenuBoard.MAX_TOTAL_ORDER_QUANTITY;
+import static christmas.contant.MenuBoard.getPriceByMenu;
 import static christmas.contant.MenuBoard.getSellingMenus;
+import static christmas.contant.ViewMessage.MENU_FORMAT;
 
+import christmas.domain.menu.AppetizerMenu;
+import christmas.domain.menu.DessertMenu;
 import christmas.domain.menu.DrinkMenu;
+import christmas.domain.menu.MainMenu;
 import christmas.domain.menu.Menu;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class OrderMenu {
 
@@ -45,6 +52,49 @@ public class OrderMenu {
 
     private boolean isOnlyOrderDrink(HashMap<Menu, Integer> orderMenu) {
         return orderMenu.keySet().stream().allMatch(menu -> menu instanceof DrinkMenu);
+    }
+
+    public int getTotalAmount() {
+        return orderMenu.entrySet()
+                .stream()
+                .mapToInt(entry -> getPriceByMenu(entry.getKey()) * entry.getValue())
+                .sum();
+    }
+
+    public int getCountDessertMenu() {
+        return orderMenu.keySet().stream()
+                .filter(menu -> menu instanceof DessertMenu)
+                .mapToInt(orderMenu::get)
+                .sum();
+    }
+
+    public int getCountAppetizerMenu() {
+        return orderMenu.keySet().stream()
+                .filter(menu -> menu instanceof AppetizerMenu)
+                .mapToInt(orderMenu::get)
+                .sum();
+    }
+
+    public int getCountMainMenu() {
+        return orderMenu.keySet().stream()
+                .filter(menu -> menu instanceof MainMenu)
+                .mapToInt(orderMenu::get)
+                .sum();
+    }
+
+    public int getCountDrinkMenu() {
+        return orderMenu.keySet().stream()
+                .filter(menu -> menu instanceof DrinkMenu)
+                .mapToInt(orderMenu::get)
+                .sum();
+    }
+
+    @Override
+    public String toString() {
+        List<String> orderMenuInformation = new ArrayList<>();
+        orderMenu.forEach(
+                (menu, count) -> orderMenuInformation.add(String.format(MENU_FORMAT.get(), menu.getName(), count)));
+        return String.join("\n", orderMenuInformation);
     }
 
 }

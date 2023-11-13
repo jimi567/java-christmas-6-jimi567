@@ -6,10 +6,10 @@ import christmas.domain.menu.DrinkMenu;
 import christmas.domain.menu.MainMenu;
 import christmas.domain.menu.Menu;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public enum MenuBoard {
-
     MUSHROOM_SOUP(new AppetizerMenu("양송이수프"), 6_000),
     TAPAS(new AppetizerMenu("타파스"), 5_500),
     CAESAR_SALAD(new AppetizerMenu("시저샐러드"), 8_000),
@@ -34,11 +34,20 @@ public enum MenuBoard {
         this.price = price;
     }
 
-    public Menu get() {
+    public Menu getMenu() {
         return menu;
     }
 
-    public static List<Menu> getSellingMenus() {
-        return Arrays.stream(MenuBoard.values()).map(MenuBoard::get).toList();
+    public int getPrice() {
+        return price;
+    }
+
+    public static int getPriceByMenu(Menu menu) {
+        return Arrays.stream(values()).filter(menuBoard -> menuBoard.getMenu().equals(menu)).findFirst().get()
+                .getPrice();
+    }
+
+    public static Set<Menu> getSellingMenus() {
+        return Arrays.stream(MenuBoard.values()).map(MenuBoard::getMenu).collect(Collectors.toSet());
     }
 }
