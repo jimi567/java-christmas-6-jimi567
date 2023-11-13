@@ -6,41 +6,53 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class DecemberVisitDayTest {
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {32, 0, -15, 2132141})
     @DisplayName("1~31외의 숫자로 생성하면 예외가 발생한다.")
-    void createByWrongRangeValue1() {
-        assertThatIllegalArgumentException().isThrownBy(() -> new DecemberVisitDay(32))
+    void createByWrongRangeValue(int date) {
+        assertThatIllegalArgumentException().isThrownBy(() -> new DecemberVisitDay(date))
                 .withMessage(NOT_VALIDATE_DAY_ERROR.get());
     }
 
-    @Test
-    @DisplayName("1~31외의 숫자로 생성하면 예외가 발생한다.")
-    void createByWrongRangeValue2() {
-        assertThatIllegalArgumentException().isThrownBy(() -> new DecemberVisitDay(0))
-                .withMessage(NOT_VALIDATE_DAY_ERROR.get());
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 8, 9, 15, 16, 22, 23, 29, 30})
+    @DisplayName("해당 날짜가 주말인지 아닌지를 판단한다.주말의 경우")
+    void testIsWeekendDayCaseWeekendDay(int date) {
+        VisitDay visitDay = new DecemberVisitDay(date);
+
+        assertThat(visitDay.isWeekendDay()).isTrue();
     }
 
-    @Test
-    @DisplayName("해당 날짜가 주말인지 아닌지를 판단한다.")
-    void testIsWeekendDay() {
-        VisitDay weekendDay = new DecemberVisitDay(15);
-        VisitDay weekDay = new DecemberVisitDay(10);
+    @ParameterizedTest
+    @ValueSource(ints = {3, 12, 19, 21, 26, 31, 25})
+    @DisplayName("해당 날짜가 주말인지 아닌지를 판단한다.평일의 경우")
+    void testIsWeekendDayCaseWeekDay(int date) {
+        VisitDay visitDay = new DecemberVisitDay(date);
 
-        assertThat(weekendDay.isWeekendDay()).isTrue();
-        assertThat(weekDay.isWeekendDay()).isFalse();
+        assertThat(visitDay.isWeekendDay()).isFalse();
     }
 
-    @Test
-    @DisplayName("해당 날짜가 달력에 별이 존재하는 날인지 아닌지를 판단한다.")
-    void testIsStarDay() {
-        VisitDay starDay = new DecemberVisitDay(25);
-        VisitDay nonStarDay = new DecemberVisitDay(20);
+    @ParameterizedTest
+    @ValueSource(ints = {3, 10, 17, 24, 31, 25})
+    @DisplayName("해당 날짜가 달력에 별이 존재하는 날인지 아닌지를 판단한다. 별이 있는 날의 경우")
+    void testIsStarDayCaseStarDay(int date) {
+        VisitDay visitDay = new DecemberVisitDay(date);
 
-        assertThat(starDay.isStarDay()).isTrue();
-        assertThat(nonStarDay.isStarDay()).isFalse();
+        assertThat(visitDay.isStarDay()).isTrue();
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 15, 22, 12, 27, 29})
+    @DisplayName("해당 날짜가 달력에 별이 존재하는 날인지 아닌지를 판단한다. 별이 없는 날의 경우")
+    void testIsStarDayCaseNotStarDay(int date) {
+        VisitDay visitDay = new DecemberVisitDay(date);
+
+        assertThat(visitDay.isStarDay()).isFalse();
     }
 
     @Test
