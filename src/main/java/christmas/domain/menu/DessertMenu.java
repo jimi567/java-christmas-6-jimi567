@@ -1,4 +1,4 @@
 package christmas.domain.menu;
 
-public record DessertMenu(String name, int price) implements Menu {
+public record DessertMenu(String name) implements Menu {
 }
