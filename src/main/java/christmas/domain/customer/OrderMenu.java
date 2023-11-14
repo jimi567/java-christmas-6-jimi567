@@ -62,28 +62,28 @@ public class OrderMenu {
                 .sum();
     }
 
-    public int getCountDessertMenu() {
+    public int getQuantityOfDessertMenu() {
         return orderMenu.keySet().stream()
                 .filter(menu -> getCategoryByMenu(menu).equals(DESSERT))
                 .mapToInt(orderMenu::get)
                 .sum();
     }
 
-    public int getCountAppetizerMenu() {
+    public int getQuantityOfAppetizerMenu() {
         return orderMenu.keySet().stream()
                 .filter(menu -> getCategoryByMenu(menu).equals(APPETIZER))
                 .mapToInt(orderMenu::get)
                 .sum();
     }
 
-    public int getCountMainMenu() {
+    public int getQuantityOfMainMenu() {
         return orderMenu.keySet().stream()
                 .filter(menu -> getCategoryByMenu(menu).equals(MAIN))
                 .mapToInt(orderMenu::get)
                 .sum();
     }
 
-    public int getCountDrinkMenu() {
+    public int getQuantityOfDrinkMenu() {
         return orderMenu.keySet().stream()
                 .filter(menu -> getCategoryByMenu(menu).equals(DRINK))
                 .mapToInt(orderMenu::get)
@@ -94,7 +94,7 @@ public class OrderMenu {
     public String toString() {
         List<String> orderMenuInformation = new ArrayList<>();
         orderMenu.forEach(
-                (menu, count) -> orderMenuInformation.add(String.format(MENU_FORMAT.get(), menu.name(), count)));
+                (menu, quantity) -> orderMenuInformation.add(String.format(MENU_FORMAT.get(), menu.name(), quantity)));
         return String.join("\n", orderMenuInformation);
     }
 

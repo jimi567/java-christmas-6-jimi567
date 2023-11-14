@@ -82,10 +82,10 @@ public class OrderMenuTest {
 
     @Test
     @DisplayName("디저트 메뉴의 갯수를 리턴하는 기능")
-    void testGetCountDessertMenu() {
+    void testGetQuantityOfDessertMenu() {
         setOrderMenu();
 
-        int result = orderMenu.getCountDessertMenu();
+        int result = orderMenu.getQuantityOfDessertMenu();
         int expected = 2;
 
         assertThat(result).isEqualTo(expected);
@@ -93,10 +93,10 @@ public class OrderMenuTest {
 
     @Test
     @DisplayName("메인 메뉴의 갯수를 리턴하는 기능")
-    void testGetCountMainMenu() {
+    void testGetQuantityOfMainMenu() {
         setOrderMenu();
 
-        int result = orderMenu.getCountMainMenu();
+        int result = orderMenu.getQuantityOfMainMenu();
         int expected = 2;
 
         assertThat(result).isEqualTo(expected);
@@ -104,10 +104,10 @@ public class OrderMenuTest {
 
     @Test
     @DisplayName("음료 메뉴의 갯수를 리턴하는 기능")
-    void testGetCountDrinkMenu() {
+    void testGetQuantityOfDrinkMenu() {
         setOrderMenu();
 
-        int result = orderMenu.getCountDrinkMenu();
+        int result = orderMenu.getQuantityOfDrinkMenu();
         int expected = 1;
 
         assertThat(result).isEqualTo(expected);
@@ -115,10 +115,10 @@ public class OrderMenuTest {
 
     @Test
     @DisplayName("에피타이저 메뉴의 갯수를 리턴하는 기능")
-    void testGetCountAppetizerMenu() {
+    void testGetQuantityOfAppetizerMenu() {
         setOrderMenu();
 
-        int result = orderMenu.getCountAppetizerMenu();
+        int result = orderMenu.getQuantityOfAppetizerMenu();
         int expected = 2;
 
         assertThat(result).isEqualTo(expected);
