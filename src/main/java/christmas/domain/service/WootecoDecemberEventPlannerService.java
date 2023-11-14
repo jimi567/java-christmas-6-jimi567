@@ -1,7 +1,7 @@
 package christmas.domain.service;
 
 import static christmas.contant.Event.EVENT_APPLICABLE_AMOUNT;
-import static christmas.contant.EventBadge.getEventBadgeByTotalPayment;
+import static christmas.contant.EventBadge.getEventBadgeByTotalDiscountAmount;
 import static christmas.contant.MenuBoard.CHAMPAGNE;
 import static christmas.contant.ViewMessage.DECIMAL_FORMAT;
 import static christmas.contant.ViewMessage.DISCOUNT_AMOUNT_FORMAT;
@@ -36,7 +36,7 @@ public class WootecoDecemberEventPlannerService implements EventPlannerService {
 
     @Override
     public EventBadge getEventBadge(Customer customer) {
-        return getEventBadgeByTotalPayment(customer.getTotalPayment());
+        return getEventBadgeByTotalDiscountAmount(getTotalDiscountAmount(customer));
     }
 
     @Override

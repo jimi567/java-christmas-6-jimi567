@@ -22,12 +22,12 @@ public enum EventBadge {
         return minimumBenefitAmount;
     }
 
-    public static EventBadge getEventBadgeByTotalPayment(int payment) {
-        if (payment >= SANTA.minimumBenefitAmount) {
+    public static EventBadge getEventBadgeByTotalDiscountAmount(int discountAmount) {
+        if (discountAmount >= SANTA.minimumBenefitAmount) {
             return SANTA;
-        } else if (payment >= TREE.minimumBenefitAmount) {
+        } else if (discountAmount >= TREE.minimumBenefitAmount) {
             return TREE;
-        } else if (payment >= STAR.minimumBenefitAmount) {
+        } else if (discountAmount >= STAR.minimumBenefitAmount) {
             return STAR;
         }
         return NONE;
