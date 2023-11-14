@@ -2,7 +2,6 @@ package christmas.domain.service;
 
 import christmas.contant.EventBadge;
 import christmas.domain.customer.Customer;
-import christmas.domain.menu.Menu;
 
 public interface EventPlannerService {
 
@@ -14,7 +13,7 @@ public interface EventPlannerService {
 
     String getBenefitHistory(Customer customer);
 
-    Menu getGiftMenu(Customer customer);
+    String getGiftMenuHistory(Customer customer);
 
     int getDiscountedPayment(Customer customer);
 }

@@ -5,6 +5,7 @@ import static christmas.contant.EventBadge.getEventBadgeByTotalPayment;
 import static christmas.contant.MenuBoard.CHAMPAGNE;
 import static christmas.contant.ViewMessage.DECIMAL_FORMAT;
 import static christmas.contant.ViewMessage.DISCOUNT_AMOUNT_FORMAT;
+import static christmas.contant.ViewMessage.MENU_FORMAT;
 import static christmas.contant.ViewMessage.NOTHING_MESSAGE;
 
 import christmas.contant.EventBadge;
@@ -16,7 +17,6 @@ import christmas.domain.discount.GiftDiscountPolicy;
 import christmas.domain.discount.SpecialDiscountPolicy;
 import christmas.domain.discount.WeekdayDiscountPolicy;
 import christmas.domain.discount.WeekendDiscountPolicy;
-import christmas.domain.menu.Menu;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,11 +56,11 @@ public class WootecoDecemberEventPlannerService implements EventPlannerService {
     }
 
     @Override
-    public Menu getGiftMenu(Customer customer) {
+    public String getGiftMenuHistory(Customer customer) {
         if (giftDiscountPolicy.applicableEvent(customer)) {
-            return CHAMPAGNE.getMenu();
+            return String.format(MENU_FORMAT.get(), CHAMPAGNE.getMenu().name(), 1);
         }
-        return new Menu(ViewMessage.NOTHING_MESSAGE.get());
+        return ViewMessage.NOTHING_MESSAGE.get();
     }
 
     @Override

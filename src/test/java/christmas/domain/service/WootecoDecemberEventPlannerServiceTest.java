@@ -2,6 +2,7 @@ package christmas.domain.service;
 
 import static christmas.contant.EventBadge.SANTA;
 import static christmas.contant.MenuBoard.CHAMPAGNE;
+import static christmas.contant.ViewMessage.MENU_FORMAT;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.contant.EventBadge;
@@ -67,9 +68,9 @@ public class WootecoDecemberEventPlannerServiceTest {
     }
 
     @Test
-    void testGetGiftMenu() {
-        Menu result = eventPlannerService.getGiftMenu(customer);
-        Menu expected = CHAMPAGNE.getMenu();
+    void testGetGiftMenuHistory() {
+        String result = eventPlannerService.getGiftMenuHistory(customer);
+        String expected = String.format(MENU_FORMAT.get(), CHAMPAGNE.getMenu().name(), 1);
 
         assertThat(result).isEqualTo(expected);
     }
