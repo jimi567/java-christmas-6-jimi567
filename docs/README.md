@@ -206,13 +206,13 @@
 
 1. InputValidator
 
-- [ ] InputValidator 인터페이스
-    - [ ] validate 메서드를 가진다.
+- [x] InputValidator 인터페이스
+    - [x] validate 메서드를 가진다.
 - [ ] NumberInputValidator
     - [ ] String이 정수인지를 판단한다.
-- [ ] OrderMenuInputValidator
-    - [ ] 메뉴 형식이 주어진것과 같은지 검사
-    - [ ] 중복 메뉴가 존재하는지 검사 (ex , 시저 샐러드-1,시저 샐러드-1)
+- [x] OrderMenuInputValidator
+    - [x] 메뉴 형식이 주어진것과 같은지 검사
+    - [x] 중복 메뉴가 존재하는지 검사 (ex , 시저 샐러드-1,시저 샐러드-1)
 
 2. InputParser
 
