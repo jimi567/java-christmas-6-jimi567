@@ -1,10 +1,10 @@
 package christmas.domain.customer;
 
+import static christmas.contant.Calender.CHRISTMAS_DATE;
 import static christmas.contant.Calender.D_DAY_EVENT_DAYS;
 import static christmas.contant.Calender.EVENT_DAYS;
 import static christmas.contant.Calender.STAR_DAYS;
 import static christmas.contant.Calender.WEEKEND_DAYS;
-import static christmas.contant.Calender.getChristmasDate;
 import static christmas.contant.Error.NOT_VALIDATE_DAY_ERROR;
 
 public class DecemberVisitDay implements VisitDay {
@@ -49,6 +49,6 @@ public class DecemberVisitDay implements VisitDay {
 
     @Override
     public int calculateDaysUntilDday() {
-        return getChristmasDate() - day;
+        return CHRISTMAS_DATE - day;
     }
 }
