@@ -271,8 +271,8 @@
 
 5. Inputvalidator
 
-- [ ] NumberInputValidator 테스트
-    - [ ] 정수가아닌 문자열을 입력하면 예외가 발생한다.
+- [x] NumberInputValidator 테스트
+    - [x] 정수가아닌 문자열을 입력하면 예외가 발생한다.
 
 - [ ] OrderMenuInputValidator 테스트
     - [x] 메뉴 형식이 주어진것과 다르다
