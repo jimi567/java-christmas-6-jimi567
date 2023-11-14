@@ -147,12 +147,12 @@
 
 6. Discount
 
-- [ ] DiscountPolicy 인터페이스
-    - [ ] 할인 금액을 리턴하는 기능
-    - [ ] 이벤트 적용이 가능한지 판단하는 기능
-- [ ] WeekdayDiscountPolicy
-    - [ ] Customer 주문 메뉴 목록을 통해 평일 할인 금액을 리턴한다.
-    - [ ] Customer 를 통해 평일 이벤트 적용이 가능한지 아닌지를 리턴한다.
+- [x] DiscountPolicy 인터페이스
+    - [x] 할인 금액을 리턴하는 기능
+    - [x] 이벤트 적용이 가능한지 판단하는 기능
+- [x] WeekdayDiscountPolicy
+    - [x] Customer 주문 메뉴 목록을 통해 평일 할인 금액을 리턴한다.
+    - [x] Customer 를 통해 평일 이벤트 적용이 가능한지 아닌지를 리턴한다.
 - [ ] WeekendDiscountPolicy
     - [ ] Customer 의 주문 메뉴 목록을 통해 주말 할인 금액을 리턴한다.
     - [ ] Customer 를 통해 주말 이벤트 적용이 가능한지 아닌지를 리턴한다.
@@ -256,9 +256,12 @@
 - [x] 음료 메뉴의 개수를 리턴하는 기능 테스트
 - [x] 에피타이저 메뉴의 개수를 리턴하는 기능 테스트
 
-3. Customer
+3. Discount
+
+- [ ] DiscountPolicy 테스트(각 구현체에 대해서)
+    - [ ] 혜택 적용이 가능한지 안한지 판단하는 기능을 테스트
+    - [ ] 혜택 금액을 리턴하는 기능 테스트
 
 4. EventPlanner
 
-5. Discount
 
