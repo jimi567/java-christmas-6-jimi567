@@ -168,16 +168,16 @@
 
 6. EventPlannerService
 
-- [ ] EventPlanner 인터페이스
-    - [ ] Customer 통해 해당 고객이 이벤트 혜택 대상자인지를 판단하는 기능
-    - [ ] Customer 통해 고객이 받을 수 있는 이벤트 배지를 리턴하는 기능
-    - [ ] Customer 통해 혜택 내역을 리턴하는 기능
-    - [ ] Customer 통해 혜택 금액을 리턴하는 기능
-    - [ ] Customer 통해 증정 메뉴를 리턴하는 기능
-    - [ ] Customer 통해 해당 고객의 할인 후 결제 금액을 리턴하는 기능
+- [x] EventPlanner 인터페이스
+    - [x] Customer 통해 해당 고객이 이벤트 혜택 대상자인지를 판단하는 기능
+    - [x] Customer 통해 고객이 받을 수 있는 이벤트 배지를 리턴하는 기능
+    - [x] Customer 통해 혜택 내역을 리턴하는 기능
+    - [x] Customer 통해 혜택 금액을 리턴하는 기능
+    - [x] Customer 통해 증정 메뉴를 리턴하는 기능
+    - [x] Customer 통해 해당 고객의 할인 후 결제 금액을 리턴하는 기능
 
-- [ ] WootecoDecemberEventPlannerService
-    - [ ] 인터페이스의 메소드를 구현한다.
+- [x] WootecoDecemberEventPlannerService
+    - [x] 인터페이스의 메소드를 구현한다.
 
 ### View
 
@@ -263,7 +263,7 @@
 
 4. EventPlanner
 
-- [ ] WootecoDecemberEventPlannerService 테스트
+- [x] WootecoDecemberEventPlannerService 테스트
     - [x] Customer 통해 해당 고객이 이벤트 혜택 대상자인지를 판단하는 기능
     - [x] Customer 통해 고객이 받을 수 있는 이벤트 배지를 리턴하는 기능
     - [x] Customer 통해 혜택 내역을 리턴하는 기능
