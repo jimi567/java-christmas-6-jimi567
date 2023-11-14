@@ -159,9 +159,9 @@
 - [x] D-DayDiscountPolicy
     - [x] Customer 방문 날짜을 통해 할인 금액을 리턴한다.
     - [x] Customer 를 통해 디데이 이벤트 적용이 가능한지 아닌지를 리턴한다.
-- [ ] SpecialDiscountPolicy
-    - [ ] Customer 방문 날짜을 통해 할인 금액을 리턴한다.
-    - [ ] Customer 를 통해 특별 이벤트 적용이 가능한지 아닌지를 리턴한다.
+- [x] SpecialDiscountPolicy
+    - [x] Customer 방문 날짜을 통해 할인 금액을 리턴한다.
+    - [x] Customer 를 통해 특별 이벤트 적용이 가능한지 아닌지를 리턴한다.
 - [ ] GiftDiscountPolicy
     - [ ] Customer 총 주문 금액을 통해 할인 금액을 리턴한다.
     - [ ] Customer 를 통해 증정 이벤트 적용이 가능한지 아닌지를 리턴한다.
