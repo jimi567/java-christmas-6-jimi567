@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class OrderMenuInputValidator implements InputValidator {
-    private final Pattern pattern = Pattern.compile("^([가-힣a-zA-Z]+)-(\\d)(,([가-힣a-zA-Z]+)-(\\d))*$");
+    private final Pattern pattern = Pattern.compile("^([가-힣a-zA-Z]+)-(\\d+)(,([가-힣a-zA-Z]+)-(\\d+))*$");
 
     @Override
     public void validate(String input) {
