@@ -1,6 +1,6 @@
 package util.inputparser;
 
-import static christmas.contant.Error.PARSE_INT_ERROR;
+import static christmas.contant.Error.INVALID_DATE_ERROR;
 import static christmas.contant.ViewMessage.COMMA;
 import static christmas.contant.ViewMessage.DASH;
 
@@ -18,7 +18,7 @@ public class InputParser {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            PARSE_INT_ERROR.throwError();
+            INVALID_DATE_ERROR.throwError();
         }
         return -1;
     }
