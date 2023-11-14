@@ -69,8 +69,12 @@
 ### Constants
 
 1. MenuBoard Enum 구현
-    - [x] 메뉴와 가격 상수를 가진다.
+    - [x] 메뉴,가격,카테고리를 가진다.
     - [x] 최소 주문갯수(1), 최대 총 주문 갯수를 가진다(20)
+    - [x] 카테고리 상수를 가진다.
+    - [x] menu 객체를 통해 메뉴판에 존재하는 메뉴의 가격을 얻는다.
+    - [x] menu 객체를 통해 메뉴판에 존재하는 메뉴의 카테고리을 얻는다.
+    - [x] 메뉴판에 존재하는 메뉴리스트를 얻는다.
 
 
 2. 이벤트 배지 enum 구현
@@ -118,11 +122,8 @@
     - [x] 해당 날이 디데이 이벤트 일(크리스마스) 와 며칠만큼 차이가 나는지 리턴하는 기능
 
 2. Menu
-    - [x] Menu Interface (다형성을 활용하기 위해 최상단 메뉴 인터페이스를 선언)
-    - [x] AppetizerMenu 레코드 클래스 (Menu 구현체) - 이름 필드를 가진다.
-    - [x] DessertMenu 레코드 클래스 (Menu 구현체) - 이름 필드를 가진다.
-    - [x] DrinkMenu 레코드 클래스 (Menu 구현체) - 이름 필드를 가진다.
-    - [x] MainMenu 레코드 클래스 (Menu 구현체) - 이름 필드를 가진다.
+    - [x] Menu record 클래스
+
 3. OrderMenus
 
 - [x] 고객이 주문한 음식들을 가지는 일급 컬렉션
@@ -142,7 +143,7 @@
 
 - [ ] 방문 날짜, 주문한 메뉴 내역을 가진다.
 - [ ] 총 주문 금액을 리턴한다.
-- [ ] 고객의 주문한 메뉴의 String 리스트를 리턴하는 기능
+
 
 6. Discount
 
@@ -206,22 +207,20 @@
 
 1. InputValidation
 
-- [ ] String이 Int로 파싱되는지 유효성을 검사한다.
-- [ ] String이 ,를 기준으로 HashMap<Menu,Integer>(메뉴명,주문갯수)으로 파싱되는지 검사한다.
-    - [ ] 메뉴 형식이 주어진것과 다르다.
-    - [ ] 메뉴의 개수가 Integer 범위 내 인가?
-    - [ ] 중복 메뉴가 존재하는가? (ex , 시저 샐러드-1,시저 샐러드-1)
-
+- [ ] InputValidation 인터페이스
+    - [ ] validate 메서드를 가진다.
+- [ ] visitDayInputValidation
+    - [ ] String이 Int로 파싱되는지 유효성을 검사한다.
+- [ ] OrderMenuInputValidation
+    - [ ] String이 ,를 기준으로 HashMap<Menu,Integer>(메뉴명,주문갯수)으로 파싱되는지 검사한다.
+        - [ ] 메뉴 형식이 주어진것과 같은지 검사
+        - [ ] 메뉴의 개수가 Integer 범위 내 인지 검사
+        - [ ] 중복 메뉴가 존재하는지 검사 (ex , 시저 샐러드-1,시저 샐러드-1)
 
 2. InputParser
 
-- InputParser 인터페이스
-    - [ ] 사용자 입력을 원하는 데이터 형식으로 파싱한다.
-
-- DayInputParser
-    - [ ] 사용자 입력을 Int로 파싱한다.
-
-- OrderMenuInputParser
+- InputParser
+    - [ ] 사용자 입력을 Int로 파싱한다
     - [ ] 사용자 입력을 HashMap<Menu, Integer> 형태로 파싱한다.
 
 ### Controller

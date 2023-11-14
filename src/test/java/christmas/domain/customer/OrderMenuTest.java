@@ -5,10 +5,6 @@ import static christmas.contant.Error.ORDER_ONLY_DRINK_ERROR;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-import christmas.domain.menu.AppetizerMenu;
-import christmas.domain.menu.DessertMenu;
-import christmas.domain.menu.DrinkMenu;
-import christmas.domain.menu.MainMenu;
 import christmas.domain.menu.Menu;
 import java.util.HashMap;
 import org.junit.jupiter.api.DisplayName;
@@ -22,10 +18,10 @@ public class OrderMenuTest {
 
     void setOrderMenu() {
         HashMap<Menu, Integer> source = new HashMap<>();
-        source.put(new MainMenu("크리스마스파스타"), 2);
-        source.put(new DrinkMenu("레드와인"), 1);
-        source.put(new AppetizerMenu("타파스"), 2);
-        source.put(new DessertMenu("초코케이크"), 2);
+        source.put(new Menu("크리스마스파스타"), 2);
+        source.put(new Menu("레드와인"), 1);
+        source.put(new Menu("타파스"), 2);
+        source.put(new Menu("초코케이크"), 2);
         orderMenu = new OrderMenu(source);
     }
 
@@ -34,7 +30,7 @@ public class OrderMenuTest {
     @DisplayName("메뉴판에 없는 메뉴를 주문한 경우")
     void createByNonExistMenuInMenuBoard(String name, int count) {
         HashMap<Menu, Integer> orderMenu = new HashMap<>();
-        orderMenu.put(new MainMenu(name), count);
+        orderMenu.put(new Menu(name), count);
         assertThatIllegalArgumentException().isThrownBy(() -> new OrderMenu(orderMenu))
                 .withMessage(NOT_VALIDATE_ORDER_ERROR.get());
     }
@@ -44,7 +40,7 @@ public class OrderMenuTest {
     @DisplayName("메뉴 개수가 1개 이상이 아닐 경우 예외를 발생한다.")
     void createByCountLessThan1(String name, int count) {
         HashMap<Menu, Integer> orderMenu = new HashMap<>();
-        orderMenu.put(new MainMenu(name), count);
+        orderMenu.put(new Menu(name), count);
         assertThatIllegalArgumentException().isThrownBy(() -> new OrderMenu(orderMenu))
                 .withMessage(NOT_VALIDATE_ORDER_ERROR.get());
     }
@@ -54,8 +50,8 @@ public class OrderMenuTest {
     void createByTotalCountGreater20() {
         HashMap<Menu, Integer> orderMenu = new HashMap<>();
 
-        orderMenu.put(new DrinkMenu("제로콜라"), 5);
-        orderMenu.put(new MainMenu("크리스마스파스터"), 16);
+        orderMenu.put(new Menu("제로콜라"), 5);
+        orderMenu.put(new Menu("크리스마스파스터"), 16);
 
         assertThatIllegalArgumentException().isThrownBy(() -> new OrderMenu(orderMenu))
                 .withMessage(NOT_VALIDATE_ORDER_ERROR.get());
@@ -66,8 +62,8 @@ public class OrderMenuTest {
     void createByOnlyDrink() {
         HashMap<Menu, Integer> orderMenu = new HashMap<>();
 
-        orderMenu.put(new DrinkMenu("제로콜라"), 5);
-        orderMenu.put(new DrinkMenu("레드와인"), 10);
+        orderMenu.put(new Menu("제로콜라"), 5);
+        orderMenu.put(new Menu("레드와인"), 10);
 
         assertThatIllegalArgumentException().isThrownBy(() -> new OrderMenu(orderMenu))
                 .withMessage(ORDER_ONLY_DRINK_ERROR.get());
