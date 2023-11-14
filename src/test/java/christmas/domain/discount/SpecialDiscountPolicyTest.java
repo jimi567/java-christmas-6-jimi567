@@ -3,7 +3,7 @@ package christmas.domain.discount;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.domain.customer.Customer;
-import christmas.domain.customer.DecemberVisitDay;
+import christmas.domain.customer.DecemberVisitDate;
 import christmas.domain.customer.OrderMenu;
 import christmas.domain.menu.Menu;
 import java.util.HashMap;
@@ -30,7 +30,7 @@ public class SpecialDiscountPolicyTest {
     @ValueSource(ints = {4, 6, 11, 12, 30})
     @DisplayName("고객의 방문날짜에 별이 없으면 혜택적용이 불가능하다.")
     void testApplicableEventCaseApplicable(int date) {
-        Customer customer = new Customer(new DecemberVisitDay(date), orderMenu);
+        Customer customer = new Customer(new DecemberVisitDate(date), orderMenu);
 
         assertThat(discountPolicy.applicableEvent(customer)).isFalse();
     }
@@ -39,7 +39,7 @@ public class SpecialDiscountPolicyTest {
     @ValueSource(ints = {3, 10, 17, 24, 31, 25})
     @DisplayName("고객의 방문날짜가 별이 있으면 혜택적용이 가능하다.")
     void testApplicableEventCaseNotApplicable(int date) {
-        Customer customer = new Customer(new DecemberVisitDay(date), orderMenu);
+        Customer customer = new Customer(new DecemberVisitDate(date), orderMenu);
 
         assertThat(discountPolicy.applicableEvent(customer)).isTrue();
     }
@@ -48,7 +48,7 @@ public class SpecialDiscountPolicyTest {
     @ValueSource(ints = {3, 10, 17, 24, 31, 25})
     @DisplayName("특별 혜택의 혜택 금액을 리턴한다.")
     void testGetDiscountAmount(int date) {
-        Customer customer = new Customer(new DecemberVisitDay(date), orderMenu);
+        Customer customer = new Customer(new DecemberVisitDate(date), orderMenu);
 
         int result = discountPolicy.getDiscountAmount(customer);
         int expected = 1000;

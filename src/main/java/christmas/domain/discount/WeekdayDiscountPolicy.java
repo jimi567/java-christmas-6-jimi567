@@ -15,7 +15,7 @@ public class WeekdayDiscountPolicy implements DiscountPolicy {
 
     @Override
     public boolean applicableEvent(Customer customer) {
-        return !customer.visitDay().isWeekendDay();
+        return !customer.visitDate().isWeekendDay();
     }
 
     @Override

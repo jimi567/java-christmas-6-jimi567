@@ -1,6 +1,6 @@
 package christmas.domain.customer;
 
-public interface VisitDay {
+public interface VisitDate {
     void validate(int day);
 
     boolean isEventDay();

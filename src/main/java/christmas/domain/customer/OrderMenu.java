@@ -1,6 +1,6 @@
 package christmas.domain.customer;
 
-import static christmas.contant.Error.NOT_VALIDATE_ORDER_ERROR;
+import static christmas.contant.Error.INVALID_ORDER_ERROR;
 import static christmas.contant.Error.ORDER_ONLY_DRINK_ERROR;
 import static christmas.contant.MenuBoard.APPETIZER;
 import static christmas.contant.MenuBoard.AT_LEAST_ORDER_QUANTITY;
@@ -29,11 +29,11 @@ public class OrderMenu {
 
     private void validate(HashMap<Menu, Integer> orderMenu) {
         if (!isExistMenuBoard(orderMenu)) {
-            NOT_VALIDATE_ORDER_ERROR.throwError();
+            INVALID_ORDER_ERROR.throwError();
         } else if (!isOrderingAtLeastOrderCount(orderMenu)) {
-            NOT_VALIDATE_ORDER_ERROR.throwError();
+            INVALID_ORDER_ERROR.throwError();
         } else if (!isWithinMaxToTalOrderCount(orderMenu)) {
-            NOT_VALIDATE_ORDER_ERROR.throwError();
+            INVALID_ORDER_ERROR.throwError();
         } else if (isOnlyOrderDrink(orderMenu)) {
             ORDER_ONLY_DRINK_ERROR.throwError();
         }

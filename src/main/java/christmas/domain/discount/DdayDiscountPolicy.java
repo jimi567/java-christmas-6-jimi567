@@ -11,7 +11,7 @@ public class DdayDiscountPolicy implements DiscountPolicy {
     public int getDiscountAmount(Customer customer) {
         if (applicableEvent(customer)) {
             return D_DAY_DISCOUNT_START_AMOUNT.get()
-                    + (CHRISTMAS_DATE - customer.visitDay().calculateDaysUntilDday() - 1)
+                    + (CHRISTMAS_DATE - customer.visitDate().calculateDaysUntilDday() - 1)
                     * D_DAY_DISCOUNT_PLUS_AMOUNT.get();
         }
         return 0;
@@ -19,7 +19,7 @@ public class DdayDiscountPolicy implements DiscountPolicy {
 
     @Override
     public boolean applicableEvent(Customer customer) {
-        return customer.visitDay().isBeforeDday();
+        return customer.visitDate().isBeforeDday();
     }
 
     @Override

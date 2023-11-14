@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.contant.EventBadge;
 import christmas.domain.customer.Customer;
-import christmas.domain.customer.DecemberVisitDay;
+import christmas.domain.customer.DecemberVisitDate;
 import christmas.domain.customer.OrderMenu;
 import christmas.domain.menu.Menu;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ public class WootecoDecemberEventPlannerServiceTest {
         orderMenuSource.put(new Menu("바비큐립"), 1);
         orderMenuSource.put(new Menu("초코케이크"), 2);
         orderMenuSource.put(new Menu("제로콜라"), 1);
-        customer = new Customer(new DecemberVisitDay(3), new OrderMenu(orderMenuSource));
+        customer = new Customer(new DecemberVisitDate(3), new OrderMenu(orderMenuSource));
     }
 
     @Test

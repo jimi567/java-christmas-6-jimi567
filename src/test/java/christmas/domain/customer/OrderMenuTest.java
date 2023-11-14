@@ -1,6 +1,6 @@
 package christmas.domain.customer;
 
-import static christmas.contant.Error.NOT_VALIDATE_ORDER_ERROR;
+import static christmas.contant.Error.INVALID_ORDER_ERROR;
 import static christmas.contant.Error.ORDER_ONLY_DRINK_ERROR;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -32,7 +32,7 @@ public class OrderMenuTest {
         HashMap<Menu, Integer> orderMenu = new HashMap<>();
         orderMenu.put(new Menu(name), count);
         assertThatIllegalArgumentException().isThrownBy(() -> new OrderMenu(orderMenu))
-                .withMessage(NOT_VALIDATE_ORDER_ERROR.get());
+                .withMessage(INVALID_ORDER_ERROR.get());
     }
 
     @ParameterizedTest
@@ -42,7 +42,7 @@ public class OrderMenuTest {
         HashMap<Menu, Integer> orderMenu = new HashMap<>();
         orderMenu.put(new Menu(name), count);
         assertThatIllegalArgumentException().isThrownBy(() -> new OrderMenu(orderMenu))
-                .withMessage(NOT_VALIDATE_ORDER_ERROR.get());
+                .withMessage(INVALID_ORDER_ERROR.get());
     }
 
     @Test
@@ -54,7 +54,7 @@ public class OrderMenuTest {
         orderMenu.put(new Menu("크리스마스파스터"), 16);
 
         assertThatIllegalArgumentException().isThrownBy(() -> new OrderMenu(orderMenu))
-                .withMessage(NOT_VALIDATE_ORDER_ERROR.get());
+                .withMessage(INVALID_ORDER_ERROR.get());
     }
 
     @Test
