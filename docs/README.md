@@ -208,8 +208,8 @@
 
 - [x] InputValidator 인터페이스
     - [x] validate 메서드를 가진다.
-- [ ] NumberInputValidator
-    - [ ] String이 정수인지를 판단한다.
+- [x] NumberInputValidator
+    - [x] String이 정수인지를 판단한다.
 - [x] OrderMenuInputValidator
     - [x] 메뉴 형식이 주어진것과 같은지 검사
     - [x] 중복 메뉴가 존재하는지 검사 (ex , 시저 샐러드-1,시저 샐러드-1)
@@ -274,6 +274,6 @@
 - [x] NumberInputValidator 테스트
     - [x] 정수가아닌 문자열을 입력하면 예외가 발생한다.
 
-- [ ] OrderMenuInputValidator 테스트
+- [x] OrderMenuInputValidator 테스트
     - [x] 메뉴 형식이 주어진것과 다르다
     - [x] 중복 메뉴가 입력되면 예외를 발생한다.
