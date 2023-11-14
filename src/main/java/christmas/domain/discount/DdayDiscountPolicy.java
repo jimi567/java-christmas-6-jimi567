@@ -21,4 +21,9 @@ public class DdayDiscountPolicy implements DiscountPolicy {
     public boolean applicableEvent(Customer customer) {
         return customer.visitDay().isBeforeDday();
     }
+
+    @Override
+    public String toString() {
+        return "크리스마스 디데이 할인: ";
+    }
 }

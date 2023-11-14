@@ -16,4 +16,9 @@ public class WeekendDiscountPolicy implements DiscountPolicy {
     public boolean applicableEvent(Customer customer) {
         return customer.visitDay().isWeekendDay();
     }
+
+    @Override
+    public String toString() {
+        return "주말 할인: ";
+    }
 }

@@ -17,4 +17,9 @@ public class SpecialDiscountPolicy implements DiscountPolicy {
     public boolean applicableEvent(Customer customer) {
         return customer.visitDay().isStarDay();
     }
+
+    @Override
+    public String toString() {
+        return "특별 할인: ";
+    }
 }
