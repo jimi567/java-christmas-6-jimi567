@@ -77,20 +77,48 @@ public class DecemberEventPlannerController {
     }
 
     private void showResult() {
-        outputView.printOrderMenu(orderMenu.toString());
-        outputView.printBeforeDiscountTotalPayment(
-                String.format(MONEY_FORMAT.get(), decimalFormat.format(customer.getTotalPayment())));
-        outputView.printGiftMenu(eventPlannerService.getGiftMenuHistory(customer));
-        outputView.printBenefitHistory(eventPlannerService.getBenefitHistory(customer));
-        outputView.printTotalBenefitAmount(String.format(DISCOUNT_AMOUNT_FORMAT.get(),
-                decimalFormat.format(eventPlannerService.getTotalDiscountAmount(customer))));
-        outputView.printAfterDiscountTotalPayment(String.format(MONEY_FORMAT.get(),
-                decimalFormat.format(eventPlannerService.getDiscountedPayment(customer))));
-        outputView.printEventBadge(eventPlannerService.getEventBadge(customer).getName());
+        showOrderMenu();
+        showBeforeDiscountTotalPayment();
+        showGiftMenu();
+        showBenefitHistory();
+        showTotalBenefitAmount();
+        showAfterDiscountTotalPayment();
+        showEventBadge();
     }
 
     private void showOrderMenu() {
         outputView.printOrderMenu(orderMenu.toString());
     }
 
+    private void showBeforeDiscountTotalPayment() {
+        outputView.printBeforeDiscountTotalPayment(
+                String.format(MONEY_FORMAT.get(), decimalFormat.format(customer.getTotalPayment())));
+    }
+
+    private void showGiftMenu() {
+        outputView.printGiftMenu(eventPlannerService.getGiftMenuHistory(customer));
+    }
+
+    private void showBenefitHistory() {
+        outputView.printBenefitHistory(eventPlannerService.getBenefitHistory(customer));
+    }
+
+    private void showTotalBenefitAmount() {
+        int totalBenefitAmount = eventPlannerService.getTotalDiscountAmount(customer);
+        String history = String.format(MONEY_FORMAT.get(), 0);
+        if (totalBenefitAmount > 0) {
+            history = String.format(DISCOUNT_AMOUNT_FORMAT.get(),
+                    decimalFormat.format(eventPlannerService.getTotalDiscountAmount(customer)));
+        }
+        outputView.printTotalBenefitAmount(history);
+    }
+
+    private void showAfterDiscountTotalPayment() {
+        outputView.printAfterDiscountTotalPayment(String.format(MONEY_FORMAT.get(),
+                decimalFormat.format(eventPlannerService.getDiscountedPayment(customer))));
+    }
+
+    private void showEventBadge() {
+        outputView.printEventBadge(eventPlannerService.getEventBadge(customer).getName());
+    }
 }

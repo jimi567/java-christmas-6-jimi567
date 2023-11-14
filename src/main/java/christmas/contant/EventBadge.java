@@ -18,10 +18,6 @@ public enum EventBadge {
         return name;
     }
 
-    public int getMinimumBenefitAmount() {
-        return minimumBenefitAmount;
-    }
-
     public static EventBadge getEventBadgeByTotalDiscountAmount(int discountAmount) {
         if (discountAmount >= SANTA.minimumBenefitAmount) {
             return SANTA;
