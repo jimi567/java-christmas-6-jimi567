@@ -208,8 +208,6 @@
 
 - [x] InputValidator 인터페이스
     - [x] validate 메서드를 가진다.
-- [x] NumberInputValidator
-    - [x] String이 정수인지를 판단한다.
 - [x] OrderMenuInputValidator
     - [x] 메뉴 형식이 주어진것과 같은지 검사
     - [x] 중복 메뉴가 존재하는지 검사 (ex , 시저 샐러드-1,시저 샐러드-1)
@@ -217,7 +215,7 @@
 2. InputParser
 
 - InputParser
-    - [ ] 사용자 입력을 Int로 파싱한다
+    - [ ] 사용자 입력을 Int로 파싱한다.
     - [ ] 사용자 입력을 HashMap<Menu, Integer> 형태로 파싱한다.
 
 ### Controller
@@ -270,9 +268,6 @@
     - [x] Customer 통해 해당 고객의 할인 후 결제 금액을 리턴하는 기능
 
 5. Inputvalidator
-
-- [x] NumberInputValidator 테스트
-    - [x] 정수가아닌 문자열을 입력하면 예외가 발생한다.
 
 - [x] OrderMenuInputValidator 테스트
     - [x] 메뉴 형식이 주어진것과 다르다
