@@ -1,6 +1,7 @@
 package christmas.contant;
 
 public enum EventBadge {
+    NONE("없음", 0),
     STAR("별", 5_000),
     TREE("트리", 10_000),
     SANTA("산타", 20_000);
@@ -20,4 +21,16 @@ public enum EventBadge {
     public int getMinimumBenefitAmount() {
         return minimumBenefitAmount;
     }
+
+    public static EventBadge getEventBadgeByTotalPayment(int payment) {
+        if (payment >= SANTA.minimumBenefitAmount) {
+            return SANTA;
+        } else if (payment >= TREE.minimumBenefitAmount) {
+            return TREE;
+        } else if (payment >= STAR.minimumBenefitAmount) {
+            return STAR;
+        }
+        return NONE;
+    }
+
 }
