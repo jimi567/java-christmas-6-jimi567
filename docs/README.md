@@ -156,9 +156,9 @@
 - [x] WeekendDiscountPolicy
     - [x] Customer 의 주문 메뉴 목록을 통해 주말 할인 금액을 리턴한다.
     - [x] Customer 를 통해 주말 이벤트 적용이 가능한지 아닌지를 리턴한다.
-- [ ] D-DayDiscountPolicy
-    - [ ] Customer 방문 날짜을 통해 할인 금액을 리턴한다.
-    - [ ] Customer 를 통해 디데이 이벤트 적용이 가능한지 아닌지를 리턴한다.
+- [x] D-DayDiscountPolicy
+    - [x] Customer 방문 날짜을 통해 할인 금액을 리턴한다.
+    - [x] Customer 를 통해 디데이 이벤트 적용이 가능한지 아닌지를 리턴한다.
 - [ ] SpecialDiscountPolicy
     - [ ] Customer 방문 날짜을 통해 할인 금액을 리턴한다.
     - [ ] Customer 를 통해 특별 이벤트 적용이 가능한지 아닌지를 리턴한다.
