@@ -55,7 +55,7 @@ public class OrderMenu {
         return orderMenu.keySet().stream().allMatch(menu -> getCategoryByMenu(menu).equals(DRINK));
     }
 
-    public int getTotalAmount() {
+    public int getTotalPrice() {
         return orderMenu.entrySet()
                 .stream()
                 .mapToInt(entry -> getPriceByMenu(entry.getKey()) * entry.getValue())
