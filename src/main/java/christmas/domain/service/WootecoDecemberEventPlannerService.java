@@ -9,7 +9,6 @@ import static christmas.contant.ViewMessage.MENU_FORMAT;
 import static christmas.contant.ViewMessage.NOTHING_MESSAGE;
 
 import christmas.contant.EventBadge;
-import christmas.contant.ViewMessage;
 import christmas.domain.customer.Customer;
 import christmas.domain.discount.DdayDiscountPolicy;
 import christmas.domain.discount.DiscountPolicy;
@@ -60,7 +59,7 @@ public class WootecoDecemberEventPlannerService implements EventPlannerService {
         if (giftDiscountPolicy.applicableEvent(customer)) {
             return String.format(MENU_FORMAT.get(), CHAMPAGNE.getMenu().name(), 1);
         }
-        return ViewMessage.NOTHING_MESSAGE.get();
+        return NOTHING_MESSAGE.get();
     }
 
     @Override
