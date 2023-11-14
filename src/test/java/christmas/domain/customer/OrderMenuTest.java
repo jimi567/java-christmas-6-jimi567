@@ -74,7 +74,7 @@ public class OrderMenuTest {
     void testGetTotalAmount() {
         setOrderMenu();
 
-        int result = orderMenu.getTotalAmount();
+        int result = orderMenu.getTotalPrice();
         int expected = 151_000;
 
         assertThat(result).isEqualTo(expected);

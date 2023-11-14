@@ -13,7 +13,7 @@ public enum ViewMessage {
     AFTER_DISCOUNT_TOTAL_ORDER_AMOUNT_MESSAGE("<할인 후 예상 결제 금액>"),
     EVENT_BADGE_MESSAGE("<12월 이벤트 배지>"),
     MONEY_FORMAT("%s원"),
-    DISCOUNT_AMOUNT_FORMAT("-" + MONEY_FORMAT),
+    DISCOUNT_AMOUNT_FORMAT("-" + MONEY_FORMAT.get()),
     NOTHING_MESSAGE("없음"),
     MENU_FORMAT("%s %d개"),
     DECIMAL_FORMAT("###,###");
