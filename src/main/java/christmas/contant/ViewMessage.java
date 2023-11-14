@@ -16,7 +16,9 @@ public enum ViewMessage {
     DISCOUNT_AMOUNT_FORMAT("-" + MONEY_FORMAT.get()),
     NOTHING_MESSAGE("없음"),
     MENU_FORMAT("%s %d개"),
-    DECIMAL_FORMAT("###,###");
+    DECIMAL_FORMAT("###,###"),
+    COMMA(","),
+    DASH("-");
 
     private final String message;
 

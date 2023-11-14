@@ -215,8 +215,8 @@
 2. InputParser
 
 - InputParser
-    - [ ] 사용자 입력을 Int로 파싱한다.
-    - [ ] 사용자 입력을 HashMap<Menu, Integer> 형태로 파싱한다.
+    - [x] 사용자 입력을 Int로 파싱한다.
+    - [x] 사용자 입력을 HashMap<Menu, Integer> 형태로 파싱한다.
 
 ### Controller
 
