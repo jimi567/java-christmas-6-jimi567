@@ -30,6 +30,7 @@ public class DecemberEventPlannerController {
     private final InputParser inputParser = new InputParser();
     private final List<DiscountPolicy> discountPolicies = new ArrayList<>();
     private final EventPlannerService eventPlannerService = new WootecoDecemberEventPlannerService();
+    private final DecimalFormat decimalFormat = new DecimalFormat(DECIMAL_FORMAT.get());
     private VisitDate visitDate;
     private OrderMenu orderMenu;
     private Customer customer;
@@ -39,6 +40,7 @@ public class DecemberEventPlannerController {
         initDiscountPolies();
         outputView.printStartMessage();
         setCustomer();
+        outputView.printResultMessage();
         showResult();
     }
 
@@ -76,7 +78,6 @@ public class DecemberEventPlannerController {
 
     private void showResult() {
         outputView.printOrderMenu(orderMenu.toString());
-        DecimalFormat decimalFormat = new DecimalFormat(DECIMAL_FORMAT.get());
         outputView.printBeforeDiscountTotalPayment(
                 String.format(MONEY_FORMAT.get(), decimalFormat.format(customer.getTotalPayment())));
         outputView.printGiftMenu(eventPlannerService.getGiftMenuHistory(customer));
