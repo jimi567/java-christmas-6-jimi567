@@ -103,16 +103,16 @@
 
 ### 도메인
 
-1. VisitDay
+1. VisitDate
 
-- [ ] VisitDay interface
+- [ ] VisitDate interface
     - [x] 날짜에 대한 유효성 검사하는 기능
     - [x] 이벤트 기간인지를 리턴하는 기능
     - [x] 해당 날이 주말인지를 리턴하는 기능
     - [x] 이벤트 달력에 별이 있는 날인지 리턴하는 기능
     - [x] 방문날짜가 디데이 이벤트 적용이 가능한지 리턴하는 기능
     - [x] 방문날짜가 디데이(크리스마스)와 며칠 차이 나는지 리턴하는 기능
-- [ ] DecemberVisitDay
+- [ ] DecemberVisitDate
     - [x] 날짜에 대한 유효성 검사
         - [x] 1~31사이의 정수인지?
     - [x] 해당 날이 12월에서 주말이벤트 날인지(금,토) 리턴하는 기능
@@ -124,7 +124,7 @@
 2. Menu
     - [x] Menu record 클래스
 
-3. OrderMenus
+3. OrderMenu
 
 - [x] 고객이 주문한 음식들을 가지는 일급 컬렉션
 - [x] 주문 음식에 대한 유효성 검사
@@ -204,17 +204,15 @@
 
 ### Util
 
-1. InputValidation
+1. InputValidator
 
-- [ ] InputValidation 인터페이스
+- [ ] InputValidator 인터페이스
     - [ ] validate 메서드를 가진다.
-- [ ] visitDayInputValidation
-    - [ ] String이 Int로 파싱되는지 유효성을 검사한다.
-- [ ] OrderMenuInputValidation
-    - [ ] String이 ,를 기준으로 HashMap<Menu,Integer>(메뉴명,주문갯수)으로 파싱되는지 검사한다.
-        - [ ] 메뉴 형식이 주어진것과 같은지 검사
-        - [ ] 메뉴의 개수가 Integer 범위 내 인지 검사
-        - [ ] 중복 메뉴가 존재하는지 검사 (ex , 시저 샐러드-1,시저 샐러드-1)
+- [ ] NumberInputValidator
+    - [ ] String이 정수인지를 판단한다.
+- [ ] OrderMenuInputValidator
+    - [ ] 메뉴 형식이 주어진것과 같은지 검사
+    - [ ] 중복 메뉴가 존재하는지 검사 (ex , 시저 샐러드-1,시저 샐러드-1)
 
 2. InputParser
 
@@ -233,7 +231,7 @@
 
 ### 도메인 로직에 관한 테스트 코드를 작성한다.
 
-1. Day
+1. VisitDate
     - [x] 32 생성하면 예외를 발생하는지 테스트
     - [x] 0으로 생성하면 예외를 발생하는지 테스트
     - [x] 해당 날짜가 주말인지 아닌지를 판단하는 메서드 테스트
@@ -242,7 +240,7 @@
     - [x] 해당 날짜가 디데이이벤트 적용기간인지 판단하는 메서드 테스트
     - [x] 해당 날짜와 디데이 간의 차이를 계산하는 메서드 테스트
 
-2. OrderMenus
+2. OrderMenu
 
 - [x] 주문 음식에 대한 유효성 검사 테스트
     - [x] 메뉴판에 존재하는 메뉴가 아닐 경우 테스트
@@ -271,4 +269,11 @@
     - [x] Customer 통해 증정 메뉴를 리턴하는 기능
     - [x] Customer 통해 해당 고객의 할인 후 결제 금액을 리턴하는 기능
 
+5. Inputvalidator
 
+- [ ] NumberInputValidator 테스트
+    - [ ] 정수가아닌 문자열을 입력하면 예외가 발생한다.
+
+- [ ] OrderMenuInputValidator 테스트
+    - [x] 메뉴 형식이 주어진것과 다르다
+    - [x] 중복 메뉴가 입력되면 예외를 발생한다.
