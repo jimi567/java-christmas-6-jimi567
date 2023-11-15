@@ -85,7 +85,7 @@ public class DecemberEventPlannerController {
 
     private void showBeforeDiscountTotalPayment() {
         outputView.printBeforeDiscountTotalPayment(
-                String.format(MONEY_FORMAT.get(), decimalFormat(customer.getTotalPayment())));
+                String.format(MONEY_FORMAT.get(), decimalFormat(customer.orderMenu().getTotalPrice())));
     }
 
     private void showGiftMenu() {

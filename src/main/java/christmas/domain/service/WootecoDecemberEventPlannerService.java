@@ -24,7 +24,7 @@ public class WootecoDecemberEventPlannerService implements EventPlannerService {
 
     @Override
     public boolean isEventTarget(Customer customer) {
-        return customer.getTotalPayment() >= EVENT_APPLICABLE_AMOUNT.get();
+        return customer.orderMenu().getTotalPrice() >= EVENT_APPLICABLE_AMOUNT.get();
     }
 
     @Override
@@ -62,7 +62,8 @@ public class WootecoDecemberEventPlannerService implements EventPlannerService {
         DiscountPolicy giftDiscountPolicy = discountPolicies.stream()
                 .filter(GiftDiscountPolicy.class::isInstance).findFirst().get();
 
-        return customer.getTotalPayment() - getTotalDiscountAmount(customer) + giftDiscountPolicy.getDiscountAmount(
+        return customer.orderMenu().getTotalPrice() - getTotalDiscountAmount(customer)
+                + giftDiscountPolicy.getDiscountAmount(
                 customer);
     }
 
