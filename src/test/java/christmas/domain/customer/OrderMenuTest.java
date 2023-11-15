@@ -2,6 +2,10 @@ package christmas.domain.customer;
 
 import static christmas.contant.Error.INVALID_ORDER_ERROR;
 import static christmas.contant.Error.ORDER_ONLY_DRINK_ERROR;
+import static christmas.contant.MenuBoard.APPETIZER;
+import static christmas.contant.MenuBoard.DESSERT;
+import static christmas.contant.MenuBoard.DRINK;
+import static christmas.contant.MenuBoard.MAIN;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
@@ -85,7 +89,7 @@ public class OrderMenuTest {
     void testGetQuantityOfDessertMenu() {
         setOrderMenu();
 
-        int result = orderMenu.getQuantityOfDessertMenu();
+        int result = orderMenu.getQuantityOfMenuByCategory(DESSERT);
         int expected = 2;
 
         assertThat(result).isEqualTo(expected);
@@ -96,7 +100,7 @@ public class OrderMenuTest {
     void testGetQuantityOfMainMenu() {
         setOrderMenu();
 
-        int result = orderMenu.getQuantityOfMainMenu();
+        int result = orderMenu.getQuantityOfMenuByCategory(MAIN);
         int expected = 2;
 
         assertThat(result).isEqualTo(expected);
@@ -107,7 +111,7 @@ public class OrderMenuTest {
     void testGetQuantityOfDrinkMenu() {
         setOrderMenu();
 
-        int result = orderMenu.getQuantityOfDrinkMenu();
+        int result = orderMenu.getQuantityOfMenuByCategory(DRINK);
         int expected = 1;
 
         assertThat(result).isEqualTo(expected);
@@ -118,7 +122,7 @@ public class OrderMenuTest {
     void testGetQuantityOfAppetizerMenu() {
         setOrderMenu();
 
-        int result = orderMenu.getQuantityOfAppetizerMenu();
+        int result = orderMenu.getQuantityOfMenuByCategory(APPETIZER);
         int expected = 2;
 
         assertThat(result).isEqualTo(expected);

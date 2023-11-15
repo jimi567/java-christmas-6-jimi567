@@ -2,11 +2,8 @@ package christmas.domain.customer;
 
 import static christmas.contant.Error.INVALID_ORDER_ERROR;
 import static christmas.contant.Error.ORDER_ONLY_DRINK_ERROR;
-import static christmas.contant.MenuBoard.APPETIZER;
 import static christmas.contant.MenuBoard.AT_LEAST_ORDER_QUANTITY;
-import static christmas.contant.MenuBoard.DESSERT;
 import static christmas.contant.MenuBoard.DRINK;
-import static christmas.contant.MenuBoard.MAIN;
 import static christmas.contant.MenuBoard.MAX_TOTAL_ORDER_QUANTITY;
 import static christmas.contant.MenuBoard.getCategoryByMenu;
 import static christmas.contant.MenuBoard.getPriceByMenu;
@@ -62,30 +59,9 @@ public class OrderMenu {
                 .sum();
     }
 
-    public int getQuantityOfDessertMenu() {
+    public int getQuantityOfMenuByCategory(String category) {
         return orderMenu.keySet().stream()
-                .filter(menu -> getCategoryByMenu(menu).equals(DESSERT))
-                .mapToInt(orderMenu::get)
-                .sum();
-    }
-
-    public int getQuantityOfAppetizerMenu() {
-        return orderMenu.keySet().stream()
-                .filter(menu -> getCategoryByMenu(menu).equals(APPETIZER))
-                .mapToInt(orderMenu::get)
-                .sum();
-    }
-
-    public int getQuantityOfMainMenu() {
-        return orderMenu.keySet().stream()
-                .filter(menu -> getCategoryByMenu(menu).equals(MAIN))
-                .mapToInt(orderMenu::get)
-                .sum();
-    }
-
-    public int getQuantityOfDrinkMenu() {
-        return orderMenu.keySet().stream()
-                .filter(menu -> getCategoryByMenu(menu).equals(DRINK))
+                .filter(menu -> getCategoryByMenu(menu).equals(category))
                 .mapToInt(orderMenu::get)
                 .sum();
     }
