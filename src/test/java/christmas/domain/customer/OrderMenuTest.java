@@ -2,6 +2,7 @@ package christmas.domain.customer;
 
 import static christmas.contant.Error.INVALID_ORDER_ERROR;
 import static christmas.contant.Error.ORDER_ONLY_DRINK_ERROR;
+import static christmas.contant.Error.ORDER_OVER_QUANTITY_ERROR;
 import static christmas.contant.MenuBoard.APPETIZER;
 import static christmas.contant.MenuBoard.DESSERT;
 import static christmas.contant.MenuBoard.DRINK;
@@ -50,15 +51,15 @@ public class OrderMenuTest {
     }
 
     @Test
-    @DisplayName("메뉴 개수가 1개 이상이 아닐 경우 예외를 발생한다.")
+    @DisplayName("메뉴 개수가 20개 이상일 경우 예외를 발생한다.")
     void createByTotalCountGreater20() {
         HashMap<Menu, Integer> orderMenu = new HashMap<>();
 
         orderMenu.put(new Menu("제로콜라"), 5);
-        orderMenu.put(new Menu("크리스마스파스터"), 16);
+        orderMenu.put(new Menu("크리스마스파스타"), 16);
 
         assertThatIllegalArgumentException().isThrownBy(() -> new OrderMenu(orderMenu))
-                .withMessage(INVALID_ORDER_ERROR.get());
+                .withMessage(ORDER_OVER_QUANTITY_ERROR.get());
     }
 
     @Test

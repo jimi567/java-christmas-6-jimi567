@@ -2,6 +2,7 @@ package christmas.domain.customer;
 
 import static christmas.contant.Error.INVALID_ORDER_ERROR;
 import static christmas.contant.Error.ORDER_ONLY_DRINK_ERROR;
+import static christmas.contant.Error.ORDER_OVER_QUANTITY_ERROR;
 import static christmas.contant.MenuBoard.AT_LEAST_ORDER_QUANTITY;
 import static christmas.contant.MenuBoard.DRINK;
 import static christmas.contant.MenuBoard.MAX_TOTAL_ORDER_QUANTITY;
@@ -30,7 +31,7 @@ public class OrderMenu {
         } else if (!isOrderingAtLeastOrderCount(orderMenu)) {
             INVALID_ORDER_ERROR.throwError();
         } else if (!isWithinMaxToTalOrderCount(orderMenu)) {
-            INVALID_ORDER_ERROR.throwError();
+            ORDER_OVER_QUANTITY_ERROR.throwError();
         } else if (isOnlyOrderDrink(orderMenu)) {
             ORDER_ONLY_DRINK_ERROR.throwError();
         }
