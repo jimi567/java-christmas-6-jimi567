@@ -10,23 +10,18 @@ import static christmas.contant.ViewMessage.NOTHING_MESSAGE;
 
 import christmas.contant.EventBadge;
 import christmas.domain.customer.Customer;
-import christmas.domain.discount.DdayDiscountPolicy;
 import christmas.domain.discount.DiscountPolicy;
 import christmas.domain.discount.GiftDiscountPolicy;
-import christmas.domain.discount.SpecialDiscountPolicy;
-import christmas.domain.discount.WeekdayDiscountPolicy;
-import christmas.domain.discount.WeekendDiscountPolicy;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 public class WootecoDecemberEventPlannerService implements EventPlannerService {
 
-    private final DiscountPolicy giftDiscountPolicy = new GiftDiscountPolicy();
-    private final DiscountPolicy dDayDiscountPolicy = new DdayDiscountPolicy();
-    private final DiscountPolicy specialDiscountPolicy = new SpecialDiscountPolicy();
-    private final DiscountPolicy weekdayDiscountPolicy = new WeekdayDiscountPolicy();
-    private final DiscountPolicy weekendDiscountPolicy = new WeekendDiscountPolicy();
+    private final List<DiscountPolicy> discountPolicies;
+
+    public WootecoDecemberEventPlannerService(List<DiscountPolicy> discountPolicies) {
+        this.discountPolicies = discountPolicies;
+    }
 
     @Override
     public boolean isEventTarget(Customer customer) {
@@ -40,9 +35,7 @@ public class WootecoDecemberEventPlannerService implements EventPlannerService {
 
     @Override
     public int getTotalDiscountAmount(Customer customer) {
-        return dDayDiscountPolicy.getDiscountAmount(customer) + giftDiscountPolicy.getDiscountAmount(customer)
-                + specialDiscountPolicy.getDiscountAmount(customer) + weekdayDiscountPolicy.getDiscountAmount(customer)
-                + weekendDiscountPolicy.getDiscountAmount(customer);
+        return discountPolicies.stream().mapToInt(discountPolicy -> discountPolicy.getDiscountAmount(customer)).sum();
     }
 
     @Override
@@ -56,6 +49,9 @@ public class WootecoDecemberEventPlannerService implements EventPlannerService {
 
     @Override
     public String getGiftMenuHistory(Customer customer) {
+        DiscountPolicy giftDiscountPolicy = discountPolicies.stream()
+                .filter(GiftDiscountPolicy.class::isInstance).findFirst().get();
+
         if (giftDiscountPolicy.applicableEvent(customer)) {
             return String.format(MENU_FORMAT.get(), CHAMPAGNE.getMenu().name(), 1);
         }
@@ -64,29 +60,19 @@ public class WootecoDecemberEventPlannerService implements EventPlannerService {
 
     @Override
     public int getDiscountedPayment(Customer customer) {
+        DiscountPolicy giftDiscountPolicy = discountPolicies.stream()
+                .filter(GiftDiscountPolicy.class::isInstance).findFirst().get();
+
         return customer.getTotalPayment() - getTotalDiscountAmount(customer) + giftDiscountPolicy.getDiscountAmount(
                 customer);
     }
 
     //must 리팩토링
     private List<String> makeDiscountHistory(Customer customer) {
-        List<String> history = new ArrayList<>();
-        if (dDayDiscountPolicy.applicableEvent(customer)) {
-            history.add(formatDiscountHistory(dDayDiscountPolicy, customer));
-        }
-        if (giftDiscountPolicy.applicableEvent(customer)) {
-            history.add(formatDiscountHistory(giftDiscountPolicy, customer));
-        }
-        if (specialDiscountPolicy.applicableEvent(customer)) {
-            history.add(formatDiscountHistory(specialDiscountPolicy, customer));
-        }
-        if (weekdayDiscountPolicy.applicableEvent(customer)) {
-            history.add(formatDiscountHistory(weekdayDiscountPolicy, customer));
-        }
-        if (weekendDiscountPolicy.applicableEvent(customer)) {
-            history.add(formatDiscountHistory(weekendDiscountPolicy, customer));
-        }
-        return history;
+        return discountPolicies.stream()
+                .filter(discountPolicy -> discountPolicy.applicableEvent(customer))
+                .map(discountPolicy -> formatDiscountHistory(discountPolicy, customer))
+                .toList();
     }
 
     private String formatDiscountHistory(DiscountPolicy discountPolicy, Customer customer) {

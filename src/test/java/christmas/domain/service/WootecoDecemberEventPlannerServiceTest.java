@@ -9,14 +9,22 @@ import christmas.contant.EventBadge;
 import christmas.domain.customer.Customer;
 import christmas.domain.customer.DecemberVisitDate;
 import christmas.domain.customer.OrderMenu;
+import christmas.domain.discount.DdayDiscountPolicy;
+import christmas.domain.discount.GiftDiscountPolicy;
+import christmas.domain.discount.SpecialDiscountPolicy;
+import christmas.domain.discount.WeekdayDiscountPolicy;
+import christmas.domain.discount.WeekendDiscountPolicy;
 import christmas.domain.menu.Menu;
 import java.util.HashMap;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class WootecoDecemberEventPlannerServiceTest {
-    EventPlannerService eventPlannerService = new WootecoDecemberEventPlannerService();
+    EventPlannerService eventPlannerService = new WootecoDecemberEventPlannerService(
+            List.of(new DdayDiscountPolicy(), new WeekdayDiscountPolicy(), new WeekendDiscountPolicy(),
+                    new GiftDiscountPolicy(), new SpecialDiscountPolicy()));
     Customer customer;
 
     @BeforeEach

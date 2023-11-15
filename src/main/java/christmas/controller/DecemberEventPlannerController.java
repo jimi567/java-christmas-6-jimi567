@@ -9,7 +9,6 @@ import christmas.domain.customer.DecemberVisitDate;
 import christmas.domain.customer.OrderMenu;
 import christmas.domain.customer.VisitDate;
 import christmas.domain.discount.DdayDiscountPolicy;
-import christmas.domain.discount.DiscountPolicy;
 import christmas.domain.discount.GiftDiscountPolicy;
 import christmas.domain.discount.SpecialDiscountPolicy;
 import christmas.domain.discount.WeekdayDiscountPolicy;
@@ -19,7 +18,6 @@ import christmas.domain.service.WootecoDecemberEventPlannerService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
 import util.inputparser.InputParser;
 
@@ -28,28 +26,25 @@ public class DecemberEventPlannerController {
     private final InputView inputView = InputView.getInstance();
     private final OutputView outputView = OutputView.getInstance();
     private final InputParser inputParser = new InputParser();
-    private final List<DiscountPolicy> discountPolicies = new ArrayList<>();
-    private final EventPlannerService eventPlannerService = new WootecoDecemberEventPlannerService();
     private final DecimalFormat decimalFormat = new DecimalFormat(DECIMAL_FORMAT.get());
+    private EventPlannerService eventPlannerService;
     private VisitDate visitDate;
     private OrderMenu orderMenu;
     private Customer customer;
 
 
     public void run() {
-        initDiscountPolies();
+        setEventPlannerService();
         outputView.printStartMessage();
         setCustomer();
         outputView.printResultMessage();
         showResult();
     }
 
-    private void initDiscountPolies() {
-        discountPolicies.add(new DdayDiscountPolicy());
-        discountPolicies.add(new WeekendDiscountPolicy());
-        discountPolicies.add(new WeekdayDiscountPolicy());
-        discountPolicies.add(new SpecialDiscountPolicy());
-        discountPolicies.add(new GiftDiscountPolicy());
+    private void setEventPlannerService() {
+        eventPlannerService = new WootecoDecemberEventPlannerService(
+                List.of(new DdayDiscountPolicy(), new WeekdayDiscountPolicy(), new WeekendDiscountPolicy(),
+                        new GiftDiscountPolicy(), new SpecialDiscountPolicy()));
     }
 
     private void setCustomer() {
