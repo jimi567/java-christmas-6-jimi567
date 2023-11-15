@@ -1,8 +1,8 @@
 package christmas.controller;
 
-import static christmas.contant.ViewMessage.DECIMAL_FORMAT;
 import static christmas.contant.ViewMessage.DISCOUNT_AMOUNT_FORMAT;
 import static christmas.contant.ViewMessage.MONEY_FORMAT;
+import static christmas.contant.ViewMessage.decimalFormat;
 
 import christmas.domain.customer.Customer;
 import christmas.domain.customer.DecemberVisitDate;
@@ -17,7 +17,6 @@ import christmas.domain.service.EventPlannerService;
 import christmas.domain.service.WootecoDecemberEventPlannerService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
-import java.text.DecimalFormat;
 import java.util.List;
 import util.inputparser.InputParser;
 
@@ -26,7 +25,6 @@ public class DecemberEventPlannerController {
     private final InputView inputView = InputView.getInstance();
     private final OutputView outputView = OutputView.getInstance();
     private final InputParser inputParser = new InputParser();
-    private final DecimalFormat decimalFormat = new DecimalFormat(DECIMAL_FORMAT.get());
     private EventPlannerService eventPlannerService;
     private VisitDate visitDate;
     private OrderMenu orderMenu;
@@ -87,7 +85,7 @@ public class DecemberEventPlannerController {
 
     private void showBeforeDiscountTotalPayment() {
         outputView.printBeforeDiscountTotalPayment(
-                String.format(MONEY_FORMAT.get(), decimalFormat.format(customer.getTotalPayment())));
+                String.format(MONEY_FORMAT.get(), decimalFormat(customer.getTotalPayment())));
     }
 
     private void showGiftMenu() {
@@ -103,14 +101,14 @@ public class DecemberEventPlannerController {
         String history = String.format(MONEY_FORMAT.get(), 0);
         if (totalBenefitAmount > 0) {
             history = String.format(DISCOUNT_AMOUNT_FORMAT.get(),
-                    decimalFormat.format(eventPlannerService.getTotalDiscountAmount(customer)));
+                    decimalFormat(eventPlannerService.getTotalDiscountAmount(customer)));
         }
         outputView.printTotalBenefitAmount(history);
     }
 
     private void showAfterDiscountTotalPayment() {
         outputView.printAfterDiscountTotalPayment(String.format(MONEY_FORMAT.get(),
-                decimalFormat.format(eventPlannerService.getDiscountedPayment(customer))));
+                decimalFormat(eventPlannerService.getDiscountedPayment(customer))));
     }
 
     private void showEventBadge() {

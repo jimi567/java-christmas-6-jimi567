@@ -3,16 +3,15 @@ package christmas.domain.service;
 import static christmas.contant.Event.EVENT_APPLICABLE_AMOUNT;
 import static christmas.contant.EventBadge.getEventBadgeByTotalDiscountAmount;
 import static christmas.contant.MenuBoard.CHAMPAGNE;
-import static christmas.contant.ViewMessage.DECIMAL_FORMAT;
 import static christmas.contant.ViewMessage.DISCOUNT_AMOUNT_FORMAT;
 import static christmas.contant.ViewMessage.MENU_FORMAT;
 import static christmas.contant.ViewMessage.NOTHING_MESSAGE;
+import static christmas.contant.ViewMessage.decimalFormat;
 
 import christmas.contant.EventBadge;
 import christmas.domain.customer.Customer;
 import christmas.domain.discount.DiscountPolicy;
 import christmas.domain.discount.GiftDiscountPolicy;
-import java.text.DecimalFormat;
 import java.util.List;
 
 public class WootecoDecemberEventPlannerService implements EventPlannerService {
@@ -76,8 +75,7 @@ public class WootecoDecemberEventPlannerService implements EventPlannerService {
     }
 
     private String formatDiscountHistory(DiscountPolicy discountPolicy, Customer customer) {
-        DecimalFormat decimalFormat = new DecimalFormat(DECIMAL_FORMAT.get());
         return discountPolicy + String.format(DISCOUNT_AMOUNT_FORMAT.get(),
-                decimalFormat.format(discountPolicy.getDiscountAmount(customer)));
+                decimalFormat(discountPolicy.getDiscountAmount(customer)));
     }
 }
