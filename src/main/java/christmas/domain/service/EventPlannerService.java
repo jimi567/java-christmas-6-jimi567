@@ -5,7 +5,6 @@ import christmas.domain.customer.Customer;
 
 public interface EventPlannerService {
 
-    boolean isEventTarget(Customer customer);
 
     EventBadge getEventBadge(Customer customer);
 

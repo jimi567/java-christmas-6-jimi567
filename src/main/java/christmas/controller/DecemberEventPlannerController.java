@@ -47,7 +47,7 @@ public class DecemberEventPlannerController {
 
     private void setCustomer() {
         setVisitDate();
-        setOrderMenuPrompt();
+        setOrderMenu();
         customer = new Customer(visitDate, orderMenu);
     }
 
@@ -60,12 +60,12 @@ public class DecemberEventPlannerController {
         }
     }
 
-    private void setOrderMenuPrompt() {
+    private void setOrderMenu() {
         try {
             orderMenu = new OrderMenu(inputParser.parseOrderMenu(inputView.readOrderMenu()));
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
-            setOrderMenuPrompt();
+            setOrderMenu();
         }
     }
 
@@ -80,7 +80,7 @@ public class DecemberEventPlannerController {
     }
 
     private void showOrderMenu() {
-        outputView.printOrderMenu(orderMenu.toString());
+        outputView.printOrderMenu(customer.orderMenu().toString());
     }
 
     private void showBeforeDiscountTotalPayment() {

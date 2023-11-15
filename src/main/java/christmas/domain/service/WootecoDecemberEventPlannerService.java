@@ -1,6 +1,5 @@
 package christmas.domain.service;
 
-import static christmas.contant.Event.EVENT_APPLICABLE_AMOUNT;
 import static christmas.contant.EventBadge.getEventBadgeByTotalDiscountAmount;
 import static christmas.contant.MenuBoard.CHAMPAGNE;
 import static christmas.contant.ViewMessage.DISCOUNT_AMOUNT_FORMAT;
@@ -20,11 +19,6 @@ public class WootecoDecemberEventPlannerService implements EventPlannerService {
 
     public WootecoDecemberEventPlannerService(List<DiscountPolicy> discountPolicies) {
         this.discountPolicies = discountPolicies;
-    }
-
-    @Override
-    public boolean isEventTarget(Customer customer) {
-        return customer.orderMenu().getTotalPrice() >= EVENT_APPLICABLE_AMOUNT.get();
     }
 
     @Override
@@ -67,7 +61,6 @@ public class WootecoDecemberEventPlannerService implements EventPlannerService {
                 customer);
     }
 
-    //must 리팩토링
     private List<String> makeDiscountHistory(Customer customer) {
         return discountPolicies.stream()
                 .filter(discountPolicy -> discountPolicy.applicableEvent(customer))

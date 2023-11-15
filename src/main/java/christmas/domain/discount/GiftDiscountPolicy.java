@@ -16,7 +16,7 @@ public class GiftDiscountPolicy implements DiscountPolicy {
 
     @Override
     public boolean applicableEvent(Customer customer) {
-        return customer.orderMenu().getTotalPrice() >= GIFT_APPLICABLE_AMOUNT.get();
+        return customer.isEventTarget() && customer.orderMenu().getTotalPrice() >= GIFT_APPLICABLE_AMOUNT.get();
     }
 
     @Override

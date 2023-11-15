@@ -38,14 +38,6 @@ public class WootecoDecemberEventPlannerServiceTest {
     }
 
     @Test
-    @DisplayName("총 주문이 만원 이상이면 이벤트 대상자이다")
-    void testIsEventTarget() {
-        boolean result = eventPlannerService.isEventTarget(customer);
-
-        assertThat(result).isTrue();
-    }
-
-    @Test
     @DisplayName("이벤트 배지를 반환한다.")
     void testGetEventBadge() {
         EventBadge result = eventPlannerService.getEventBadge(customer);

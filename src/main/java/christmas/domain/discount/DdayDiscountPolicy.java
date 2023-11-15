@@ -19,7 +19,7 @@ public class DdayDiscountPolicy implements DiscountPolicy {
 
     @Override
     public boolean applicableEvent(Customer customer) {
-        return customer.visitDate().isBeforeDday();
+        return customer.isEventTarget() && customer.visitDate().isBeforeDday();
     }
 
     @Override
