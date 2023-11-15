@@ -1,8 +1,6 @@
 package christmas.contant;
 
 public enum Event {
-    MIN_NUMBER_MENU(1),
-    MAX_NUMBER_MENU(20),
     EVENT_APPLICABLE_AMOUNT(10_000),
     WEEKDAY_DISCOUNT_AMOUNT(2_023),
     WEEKEND_DISCOUNT_AMOUNT(2_023),
