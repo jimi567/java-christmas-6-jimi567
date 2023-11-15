@@ -17,7 +17,7 @@ public class WeekdayDiscountPolicy implements DiscountPolicy {
 
     @Override
     public boolean applicableEvent(Customer customer) {
-        return customer.isEventTarget() && !customer.visitDate().isWeekendDay()
+        return customer.orderMenu().isMoreMinimumOrderAmountForEvent() && !customer.visitDate().isWeekendDay()
                 && customer.orderMenu().getQuantityOfMenuByCategory(DESSERT) > 0;
     }
 

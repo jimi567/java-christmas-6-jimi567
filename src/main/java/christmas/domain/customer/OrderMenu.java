@@ -3,6 +3,7 @@ package christmas.domain.customer;
 import static christmas.contant.Error.INVALID_ORDER_ERROR;
 import static christmas.contant.Error.ORDER_ONLY_DRINK_ERROR;
 import static christmas.contant.Error.ORDER_OVER_QUANTITY_ERROR;
+import static christmas.contant.Event.EVENT_APPLICABLE_AMOUNT;
 import static christmas.contant.MenuBoard.AT_LEAST_ORDER_QUANTITY;
 import static christmas.contant.MenuBoard.DRINK;
 import static christmas.contant.MenuBoard.MAX_TOTAL_ORDER_QUANTITY;
@@ -65,6 +66,10 @@ public class OrderMenu {
                 .filter(menu -> getCategoryByMenu(menu).equals(category))
                 .mapToInt(orderMenu::get)
                 .sum();
+    }
+
+    public boolean isMoreMinimumOrderAmountForEvent() {
+        return getTotalPrice() >= EVENT_APPLICABLE_AMOUNT.get();
     }
 
     @Override

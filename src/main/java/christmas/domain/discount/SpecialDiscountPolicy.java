@@ -15,7 +15,7 @@ public class SpecialDiscountPolicy implements DiscountPolicy {
 
     @Override
     public boolean applicableEvent(Customer customer) {
-        return customer.isEventTarget() && customer.visitDate().isStarDay();
+        return customer.orderMenu().isMoreMinimumOrderAmountForEvent() && customer.visitDate().isStarDay();
     }
 
     @Override
